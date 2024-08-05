@@ -3,6 +3,9 @@ import styled from "styled-components";
 import wall from "../assets/wall.png";
 import { EllipsisVertical, Search} from "lucide-react";
 import kit from "../assets/kit.jpg";
+import Dialog from "../components/Dialog.tsx";
+import {useSelector} from "react-redux";
+import {RootState} from "../States/store.ts";
 
 
 
@@ -40,6 +43,8 @@ const Profile = styled.div`
 `
 
 const MainPage = () => {
+    const selectedSender = useSelector((state: RootState) => state.app.selectedSender);
+
     return (
         <Wrapper>
             <Side>
@@ -51,14 +56,14 @@ const MainPage = () => {
                 <Header>
                     <Profile>
                         <img src={kit} style={{height: "42px", borderRadius: "50%", marginRight:"16px"}} alt={""}/>
-                        <strong style={{fontSize:"x-large"}}>Избранное</strong>
+                        <strong style={{fontSize:"x-large"}}>{selectedSender}</strong>
                     </Profile>
                     <div>
                     <Search size={24} style={{marginRight:"16px"}}></Search>
                         <EllipsisVertical size={24}></EllipsisVertical>
                     </div>
                 </Header>
-                lya cringe
+                <Dialog></Dialog>
             </Main>
         </Wrapper>
 

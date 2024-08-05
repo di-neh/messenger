@@ -11,11 +11,13 @@ interface CardProps {
 
 const Card = styled.div<CardProps>`
     display: flex;
+    
     padding: 0 10px;
     border-radius: 15px;
     margin-bottom: 5px;
     background: ${(props) => (props.isSelected ? "rgb(118,106,200)" : "initial")};
-
+    cursor: pointer;
+    
     &:hover {
         ${(props) =>
                 !props.isSelected &&
@@ -45,14 +47,21 @@ const TextConteiner = styled.div`
     width: 100%;
     justify-content: space-between;
 `
+const Chat = styled.div`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+`
 
 interface IchatCard {
     chat: IChatData;
     isSelected: boolean;
     onClick: () => void;
+    lastMessage: string;
 }
 
-const ChatCard:React.FC<IchatCard> = ({chat, isSelected, onClick}) => {
+const ChatCard:React.FC<IchatCard> = ({chat, isSelected, onClick, lastMessage}) => {
 
 
     return (
@@ -70,9 +79,9 @@ const ChatCard:React.FC<IchatCard> = ({chat, isSelected, onClick}) => {
                     </small>
                 </TextConteiner>
                 <TextConteiner>
-                    <div>
-                        {chat.lastMessage}
-                    </div>
+                    <Chat>
+                        {lastMessage}
+                    </Chat>
                     <div>
                         <PinIcon size={20}></PinIcon>
                     </div>

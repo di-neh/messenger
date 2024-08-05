@@ -34,11 +34,11 @@ const SearchBox = styled.div<{ isFocused: boolean }>`
     background: #2a2a2a;
     padding: 7px 15px;
     border-radius: 20px;
-    border: 2px solid transparent; /* Добавлено для отображения изменения рамки */
+    border: 2px solid transparent; 
     ${(props) =>
             props.isFocused &&
             css`
-                border-color: rgb(135,116,225); /* Цвет рамки при фокусе */
+                border-color: rgb(135,116,225); 
             `}
 `;
 
